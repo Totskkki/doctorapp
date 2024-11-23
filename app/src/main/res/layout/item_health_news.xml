@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <!-- News Image -->
+    <ImageView
+        android:id="@+id/newsImage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="centerCrop"
+        android:layout_alignParentStart="true"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/newsimage" />
+
+    <!-- News Title -->
+    <TextView
+        android:id="@+id/newsTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/newsImage"
+        android:layout_marginBottom="4dp"
+        android:text="Health News Title"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:maxLines="2"
+        android:ellipsize="end" />
+
+    <!-- News Description -->
+    <TextView
+        android:id="@+id/newsDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/newsImage"
+        android:layout_below="@id/newsTitle"
+        android:text="Brief news description goes here."
+        android:textSize="14sp"
+        android:maxLines="3"
+        android:ellipsize="end" />
+
+    <!-- Published Date -->
+    <TextView
+        android:id="@+id/newsDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/newsDescription"
+        android:layout_toEndOf="@id/newsImage"
+        android:text="Published Date"
+        android:textSize="12sp"
+        android:textColor="@android:color/darker_gray" />
+
+    <!-- Read More Link -->
+    <TextView
+        android:id="@+id/readMore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/newsDate"
+        android:layout_toEndOf="@id/newsImage"
+        android:text="Read More"
+        android:textColor="@android:color/holo_blue_light"
+        android:layout_marginTop="8dp" />
+
+</RelativeLayout>

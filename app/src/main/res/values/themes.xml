@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MyApplication" parent="Theme.Material3.Light.NoActionBar">
+
+        <item name="colorOnPrimary">@color/my_light_on_primary</item>
+        <item name="colorSurface">@color/my_light_background</item>
+<!--        <item name="android:fontFamily">@font/googlesans</item>-->
+        <!-- Add more light theme colors here -->
+    </style>
+
+    <style name="Theme.MyApplication" parent="Base.Theme.MyApplication" />
+</resources>

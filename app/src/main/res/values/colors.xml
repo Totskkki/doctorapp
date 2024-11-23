@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="purple">#8692f7</color>
+    <color name="redorange">#FF4433</color>
+    <color name="red">#FF0000</color>
+    <color name="border_color">#3C3939</color>
+    <color name="colorPrimary">#009688</color>
+    <color name="colorAccent">#FFC107</color>
+    <color name="colorToday">#00BCD4</color>
+    <color name="colorWaiting">#FFC107</color>
+    <color name="colorEngage">#FF5722</color>
+    <color name="colorDone">#4CAF50</color>
+    <color name="gray">#929592</color>
+    <color name="green">#00FF00</color>
+
+    green
+
+    <color name="colorPrimaryDark">#000</color>
+    <color name="contentTextColor">#020000</color>
+    <color name="imageBorderColor">#E01E7A</color>
+    <color name="miniTitle">#2A2E43</color>
+    <color name="purple_color">#6A1B9A</color>
+
+
+    <color name="backgroundColor">#FFFFFF</color>
+    <color name="textColor">#000000</color>
+    <color name="contentBodyColor">#F5F5F5</color>
+
+    <color name="my_light_primary">#6200EE</color>
+    <color name="my_light_on_primary">#FFFFFF</color>
+    <color name="my_light_background">#FFFFFF</color>
+
+    <color name="my_dark_primary">#BB86FC</color>
+    <color name="my_dark_on_primary">#000000</color>
+    <color name="my_dark_background">#121212</color>
+    <color name="errorColor">#FF0000</color>
+    <color name="successColor">#2196F3</color>
+
+
+
+</resources>

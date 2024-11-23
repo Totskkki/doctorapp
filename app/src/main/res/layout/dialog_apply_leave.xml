@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp"
+    >
+
+    <EditText
+        android:id="@+id/startDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Start Date"
+        android:focusable="false"
+        android:drawableEnd="@drawable/ic_calendar"
+        android:clickable="true" />
+
+    <EditText
+        android:id="@+id/endDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="End Date"
+        android:focusable="false"
+        android:clickable="true"
+        android:drawableEnd="@drawable/ic_calendar"
+        android:layout_marginTop="10dp" />
+
+
+    <EditText
+        android:id="@+id/reason"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Reason for Leave"
+        android:inputType="textMultiLine"
+        android:layout_marginTop="10dp" />
+
+    <Button
+        android:id="@+id/submitLeave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="Apply" />
+</LinearLayout>

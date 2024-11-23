@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/header_profile_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:contentDescription="Profile Image"
+        android:src="@drawable/doctor"
+        android:visibility="visible"
+        android:background="@drawable/circle_background"
+        android:scaleType="centerCrop"
+        android:padding="2dp"
+        />
+    <TextView
+        android:id="@+id/header_doctor_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Doctor RHU"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/header_doctor_specialty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="General Practitioner"
+        android:textSize="16sp" />
+</LinearLayout>

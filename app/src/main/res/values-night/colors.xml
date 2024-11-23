@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--colors for dark mode-->
+    <color name="backgroundColor">#121212</color>
+    <color name="textColor">#FFFFFF</color>
+    <color name="contentBodyColor">#1E1E1E</color>
+
+    <color name="my_dark_primary">#BB86FC</color>
+    <color name="my_dark_on_primary">#000000</color>
+    <color name="my_dark_background">#121212</color>
+
+</resources>

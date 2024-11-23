@@ -1,0 +1,86 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="@drawable/border">
+
+    <!-- Profile Image -->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/profile_image"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/person_message"
+        android:scaleType="centerCrop"
+        android:background="#CACACA"
+        app:shapeAppearanceOverlay="@style/CircularImageStyle"/>
+
+    <View
+        android:id="@+id/red_dot"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:layout_alignTop="@+id/profile_image"
+        android:layout_alignBottom="@+id/profile_image"
+        android:layout_alignParentStart="true"
+        android:visibility="gone"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/red_dot_shape" />
+    <TextView
+        android:id="@+id/notification_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@id/profile_image"
+        android:ellipsize="end"
+        android:maxLines="2"
+
+        android:text="Leave message"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/dateleave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/notification_message"
+        android:layout_marginStart="12dp"
+        android:layout_toEndOf="@+id/profile_image"
+        android:text="Date leave"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/time_ago"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dateleave"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="12dp"
+        android:layout_toEndOf="@id/profile_image"
+        android:text="10 min ago"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="12sp" />
+
+    <!-- Approve/Reject Badge -->
+    <TextView
+        android:id="@+id/notification_badge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@id/time_ago"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/notification_shape"
+        android:gravity="center"
+        android:text="Approved"
+        android:textColor="@android:color/white"
+
+        android:textSize="10sp"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp" />
+
+</RelativeLayout>

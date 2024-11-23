@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/datestringstr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:paddingStart="8dp"
+        android:text="Monday, 15"
+
+        android:layout_gravity="center"
+        android:textColor="#3E4A59"
+        android:textSize="16sp" />
+    <EditText
+        android:id="@+id/fromTimeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="09:00"
+        android:textColor="#3E4A59"
+        android:textSize="18sp"
+        android:visibility="gone"
+        android:textStyle="bold" />
+    <EditText
+        android:id="@+id/toTimeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10:00"
+        android:textColor="#3E4A59"
+        android:textSize="18sp"
+        android:visibility="gone"
+        android:textStyle="bold" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reason for Leave"
+        android:textAppearance="?attr/textAppearanceHeadline6" />
+
+    <EditText
+        android:id="@+id/reasonEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your reason here"
+        android:inputType="textMultiLine"
+        android:minHeight="100dp"
+        android:padding="8dp" />
+
+
+    <Button
+        android:id="@+id/submitLeaveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit Leave Request"
+        android:backgroundTint="#2196F3"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="16dp"/>
+</LinearLayout>
