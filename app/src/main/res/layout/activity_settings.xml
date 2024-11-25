@@ -25,7 +25,9 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:id="@+id/viewall"
+                android:background="@drawable/textview_background_selector">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/profileCircleImageView"
@@ -57,11 +59,13 @@
                     android:layout_toRightOf="@id/profileCircleImageView"/>
 
                 <ImageView
-                    style="@style/viewParent"
                     android:id="@+id/showmoreusername"
-                    android:src="@drawable/ic_more"
+                    style="@style/viewParent"
                     android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"/>
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="0dp"
+                    android:src="@drawable/ic_more"
+                   />
 
             </RelativeLayout>
 
@@ -75,7 +79,8 @@
                 android:drawableLeft="@drawable/ic_edit_profile"
                 android:textColor="@color/textColor"
                 android:id="@+id/editProfileTextView"
-                android:text="Edit Profile" />
+                android:text="Edit Profile"
+                android:background="@drawable/textview_background_selector"  />
 
             <TextView
                 style="@style/viewParent.headerText.settingsTextIcon"
@@ -84,7 +89,8 @@
                 android:layout_marginTop="10dp"
                 android:drawableLeft="@drawable/ic_edit_password"
                 android:text="Change Username  &amp; Password "
-                android:textColor="@color/textColor" />
+                android:textColor="@color/textColor"
+                android:background="@drawable/textview_background_selector"  />
 
             <TextView
                 style="@style/viewParent.headerText.settingsMiniTitle"
@@ -95,7 +101,8 @@
                 android:checked="true"
                 android:textColor="@color/textColor"
                 android:drawableLeft="@drawable/ic_notifications"
-                android:text="About Doctor Scheduling" />
+                android:text="About Doctor Scheduling"
+                android:background="@drawable/textview_background_selector" />
 
 
 
@@ -115,7 +122,8 @@
                 android:id="@+id/logout"
                 android:drawableLeft="@drawable/ic_logout"
                 android:textColor="@color/red"
-                android:text="Logout" />
+                android:text="Logout"
+                android:background="@drawable/textview_background_selector" />
 
 
             <TextView

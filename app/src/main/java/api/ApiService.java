@@ -17,6 +17,9 @@ import com.example.myapplication.viewmodel.Totalimmunization;
 import com.example.myapplication.viewmodel.Totalprenatal;
 import com.example.myapplication.viewmodel.UpdatePassword;
 import com.example.myapplication.viewmodel.UpdateprofileResponse;
+import com.example.myapplication.viewmodel.animalbite.AnimalbiteResponse;
+import com.example.myapplication.viewmodel.prenatal.PrenatalResponse;
+
 import com.example.myapplication.viewmodel.applyforleave;
 
 import java.util.List;
@@ -138,8 +141,18 @@ public interface ApiService {
     );
 
 
-    @GET("check-up.php")
+    @GET("records-check-up.php")
     Call<CheckupResponse> getCheckupList();
+
+    @GET("records-animalbite.php")
+    Call<AnimalbiteResponse> getAnimalbiteList();
+
+
+    @GET("records-prenatal.php")
+    Call<PrenatalResponse> getPrenatalList();
+
+
+
 
 
     @GET("search.php")

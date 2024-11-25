@@ -35,7 +35,7 @@
             app:layout_constraintTop_toBottomOf="@+id/genderage" />
 
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/patientname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -54,8 +54,8 @@
             android:layout_height="wrap_content"
             android:text="Female - 25 years old"
             android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/name"
-            app:layout_constraintTop_toBottomOf="@+id/name" />
+            app:layout_constraintStart_toStartOf="@+id/patientname"
+            app:layout_constraintTop_toBottomOf="@+id/patientname" />
 
         <ImageView
             android:id="@+id/imageView10"

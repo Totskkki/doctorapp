@@ -34,9 +34,10 @@
                     android:layout_height="50dp"
                     android:layout_marginStart="10dp"
                     android:layout_weight="0"
-                    android:background="@drawable/circle_background"
+                    android:background="@drawable/rounded_imageview_background"
                     app:srcCompat="@drawable/doctor"
                     android:scaleType="centerCrop"
+
                     />
 
                 <LinearLayout

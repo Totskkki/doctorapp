@@ -116,7 +116,7 @@ public class EditProfileBottomSheet extends BottomSheetDialogFragment {
         }
 
 
-    // Profile Image Click Listener
+        // Profile Image Click Listener
         binding.doctorProfileImage.setOnClickListener(v -> showImageSourceOptions());
 
         // Submit Button Click Listener

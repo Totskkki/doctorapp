@@ -297,9 +297,9 @@ public class DashboardActivity extends AppCompatActivity {
             case "Animal bite care":
                 startActivity(new Intent(this, AnimalBiteCareActivity.class));
                 break;
-//            case "Prenatal":
-//                startActivity(new Intent(this, PrenatalActivity.class));
-//                break;
+            case "Prenatal":
+                startActivity(new Intent(this, PrenatalActivity.class));
+                break;
 //            case "Birthing":
 //                startActivity(new Intent(this, BirthingActivity.class));
 //                break;

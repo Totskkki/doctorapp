@@ -2,17 +2,16 @@ package com.example.myapplication.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
-
-
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.databinding.ItemCheckuplistBinding;
-
-import com.example.myapplication.viewmodel.PatientCheckup;
 import com.example.myapplication.viewmodel.PatientInfo;
+import com.example.myapplication.viewmodel.animalbite.PatientBite;
+import com.example.myapplication.viewmodel.prenatal.PatientPrenatal;
 
 
 import java.text.ParseException;
@@ -21,46 +20,47 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-
-public class PatientcheckupAdapter extends RecyclerView.Adapter<PatientcheckupAdapter.PatientViewHolder> {
+public class PrenatalAdapter extends RecyclerView.Adapter<PrenatalAdapter.PrenatalViewHolder> {
 
     private final Context context;
-    private final List<PatientCheckup> patientCheckupList; // Use PatientCheckup directly
-    private final OnPatientClickListener listener;
+    private final List<PatientPrenatal> prenatalList;
+    private final PatientPrenatalClickListener listener;
 
-    public interface OnPatientClickListener {
-        void onPatientClick(PatientCheckup patientCheckup);
+    public interface PatientPrenatalClickListener {
+        void onPatientClick(PatientPrenatal patientPrenatal);
     }
 
-    public PatientcheckupAdapter(OnPatientClickListener listener, List<PatientCheckup> patientCheckupList, Context context) {
-        this.listener = listener;
-        this.patientCheckupList = patientCheckupList != null ? patientCheckupList : new ArrayList<>();
+    public PrenatalAdapter(Context context, List<PatientPrenatal> prenatalList, PatientPrenatalClickListener listener) {
         this.context = context;
+        this.prenatalList = prenatalList;
+        this.listener = listener;
     }
 
     @NonNull
     @Override
-    public PatientViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PrenatalViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ItemCheckuplistBinding binding = ItemCheckuplistBinding.inflate(
                 LayoutInflater.from(context), parent, false);
-        return new PatientViewHolder(binding);
+        return new PrenatalViewHolder(binding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PatientViewHolder holder, int position) {
-        PatientCheckup patientCheckup = patientCheckupList.get(position);
+    public void onBindViewHolder(@NonNull PrenatalViewHolder holder, int position) {
+        PatientPrenatal patientPrenatal = prenatalList.get(position);
 
-        if (patientCheckup != null) {
-            PatientInfo patientInfo = patientCheckup.getPatientInfo();
+        if (patientPrenatal != null) {
+            PatientInfo patientInfo = patientPrenatal.getPatientInfo();
             holder.binding.patientname.setText(patientInfo.getFirstname());
-            holder.binding.genderage.setText(patientInfo.getGender() + " - " + patientInfo.getAge());
-            String formattedDate = formatDateTime(patientInfo.getDateadmitted());
-            holder.binding.dateadmitted.setText(formattedDate);
-            // Display other relevant information if necessary
+            holder.binding.genderage.setText(
+                    String.format(Locale.getDefault(), "%s - %s", patientInfo.getGender(), patientInfo.getAge())
+            );
+            holder.binding.dateadmitted.setText(patientInfo.getDate());
+
+
 
             holder.binding.getRoot().setOnClickListener(v -> {
                 if (listener != null) {
-                    listener.onPatientClick(patientCheckup);
+                    listener.onPatientClick(patientPrenatal);
                 }
             });
         }
@@ -68,20 +68,18 @@ public class PatientcheckupAdapter extends RecyclerView.Adapter<PatientcheckupAd
 
     @Override
     public int getItemCount() {
-        return patientCheckupList.size();
+        return prenatalList.size();
     }
 
-    public static class PatientViewHolder extends RecyclerView.ViewHolder {
+    static class PrenatalViewHolder extends RecyclerView.ViewHolder {
         ItemCheckuplistBinding binding;
 
-        public PatientViewHolder(@NonNull ItemCheckuplistBinding binding) {
+        public PrenatalViewHolder(@NonNull ItemCheckuplistBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
     }
 
-
-    // Utility method to format date
     private String formatDateTime(String datePart) {
         try {
             SimpleDateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
@@ -94,9 +92,6 @@ public class PatientcheckupAdapter extends RecyclerView.Adapter<PatientcheckupAd
         }
     }
 }
-
-
-
 
 
 

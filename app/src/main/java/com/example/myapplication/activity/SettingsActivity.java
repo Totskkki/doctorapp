@@ -1,5 +1,7 @@
 package com.example.myapplication.activity;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +42,7 @@ public class SettingsActivity extends AppCompatActivity {
     BottomNavigationView nav;
     private TextView appVersionTextView;
     private TextView logouttext;
+    private RelativeLayout view;
 
     private Switch darkModeSwitch;
     private SharedPreferences sharedPreferences;
@@ -61,13 +65,30 @@ public class SettingsActivity extends AppCompatActivity {
         hiDoctor = findViewById(R.id.usernameTextView);
         email = findViewById(R.id.email);
         changePasswordText = findViewById(R.id.changepassword);
-        userview = findViewById(R.id.showmoreusername);
+        view = findViewById(R.id.viewall);
 
         // Set version
         setAppVersion();
 
         // Logout on click
-        logouttext.setOnClickListener(view -> logout());
+        logouttext.setOnClickListener(view -> {
+            // Set the background color animation
+            ObjectAnimator animator = ObjectAnimator.ofArgb(
+                    logouttext,
+                    "backgroundColor",
+                    getResources().getColor(android.R.color.transparent), // Start color
+                    getResources().getColor(android.R.color.darker_gray)  // End color
+            );
+
+            animator.setDuration(200); // Animation duration in milliseconds
+            animator.setRepeatMode(ValueAnimator.REVERSE);
+            animator.setRepeatCount(1); // Reverse back to original color
+            animator.start();
+
+            // Perform the logout action
+            logout();
+        });
+
 
         // Navigation setup
         setUpBottomNavigation();
@@ -159,9 +180,10 @@ public class SettingsActivity extends AppCompatActivity {
         }
 
 
-        userview = findViewById(R.id.showmoreusername);
+        view = findViewById(R.id.viewall);
 
-        userview.setOnClickListener(v -> {
+        view.setOnClickListener(v -> {
+
             Intent intent = new Intent(SettingsActivity.this, DoctorDetailsActivity.class);
 
 
@@ -260,21 +282,6 @@ public class SettingsActivity extends AppCompatActivity {
                     .into(profileIcon);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

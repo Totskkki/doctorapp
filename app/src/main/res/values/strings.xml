@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">Doctor scheduling</string>
     <string name="patient_name">Patient Name</string>
+    <string name="back">Back</string>
 </resources>

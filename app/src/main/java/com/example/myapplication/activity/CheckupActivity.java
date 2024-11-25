@@ -46,6 +46,7 @@ public class CheckupActivity extends AppCompatActivity {
     public static final String SHARED_PREFS = "UserPrefs";
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,11 +101,13 @@ public class CheckupActivity extends AppCompatActivity {
                             patientCheckup -> {
                                 // Pass only this patient's data
                                 Intent intent = new Intent(CheckupActivity.this, PatientDetailsActivity.class);
-                                intent.putExtra("name", patientCheckup.getPatientInfo().getName());
+                                intent.putExtra("name", patientCheckup.getPatientInfo().getFirstname());
                                 intent.putExtra("gender", patientCheckup.getPatientInfo().getGender());
                                 intent.putExtra("age", patientCheckup.getPatientInfo().getAge());
                                 intent.putExtra("admitted",patientCheckup.getPatientInfo().getDateadmitted());
                                 intent.putExtra("phone_number", patientCheckup.getPatientInfo().getPhone_number());
+                                intent.putExtra("recordType", "Checkup");
+
                                 intent.putParcelableArrayListExtra("present_records",
                                         new ArrayList<>(patientCheckup.getPresentRecords()));
                                 intent.putParcelableArrayListExtra("past_records",

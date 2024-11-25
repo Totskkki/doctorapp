@@ -122,7 +122,7 @@ public class SearchResultsActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<SearchResponse> call, Throwable t) {
                 Log.e("API_ERROR", t.getMessage());
-                Toast.makeText(SearchResultsActivity.this, "Network Error", Toast.LENGTH_SHORT).show();
+
             }
 
         });
