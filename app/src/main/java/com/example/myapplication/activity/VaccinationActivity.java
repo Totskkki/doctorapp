@@ -6,24 +6,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.adapter.PrenatalAdapter;
-import com.example.myapplication.viewmodel.prenatal.PrenatalResponse;
-import com.example.myapplication.viewmodel.prenatal.Prenatal;
+import com.example.myapplication.adapter.BirthingAdapter;
+import com.example.myapplication.adapter.VaccineAdapter;
+import com.example.myapplication.viewmodel.birthing.BirthingResponse;
+import com.example.myapplication.viewmodel.vaccination.VaccinationResponse;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import api.ApiService;
 import api.RetrofitClient;
@@ -31,20 +26,20 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PrenatalActivity extends AppCompatActivity {
-
+public class VaccinationActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
-    private PrenatalAdapter prenatalAdapter;
-
+    private VaccineAdapter vaccineAdapter;
     public static final String SHARED_PREFS = "UserPrefs";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_prenatal);
 
+        setContentView(R.layout.activity_vaccination);
 
         ImageView closeButton = findViewById(R.id.closeButton);
+
         closeButton.setOnClickListener(v -> onBackPressed());
 
 
@@ -62,61 +57,59 @@ public class PrenatalActivity extends AppCompatActivity {
             Toast.makeText(this, "User ID not found. Please log in again.", Toast.LENGTH_SHORT).show();
             return;
         }
-
-        // Call API to fetch checkup list
-        fetchPrenatalList(Integer.parseInt(userID));
-
+        fetchVaccinationList(Integer.parseInt(userID));
 
     }
 
-    private void fetchPrenatalList(int userId) {
+    private void fetchVaccinationList(int i) {
         progressBar.setVisibility(View.VISIBLE);
 
         ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
-        Call<PrenatalResponse> call = apiService.getPrenatalList();
+        Call<VaccinationResponse> call = apiService.getVaccineList();
 
-        call.enqueue(new Callback<PrenatalResponse>() {
+        call.enqueue(new Callback<VaccinationResponse>() {
             @Override
-            public void onResponse(Call<PrenatalResponse> call, Response<PrenatalResponse> response) {
+            public void onResponse(Call<VaccinationResponse> call, Response<VaccinationResponse> response) {
                 progressBar.setVisibility(View.GONE);
 
                 if (response.isSuccessful() && response.body() != null) {
-                    PrenatalResponse prenatalResponse = response.body();
+                    VaccinationResponse vaccineResponse = response.body();
 
-                    prenatalAdapter = new PrenatalAdapter(
-                            PrenatalActivity.this,
-                            prenatalResponse.getPatients(),
-                            patientPrenatal -> {
-                                Intent intent = new Intent(PrenatalActivity.this, PatientDetailsActivity.class);
-                                intent.putExtra("name", patientPrenatal.getPatientInfo().getFirstname());
-                                intent.putExtra("gender", patientPrenatal.getPatientInfo().getGender());
-                                intent.putExtra("age", patientPrenatal.getPatientInfo().getAge());
-                                intent.putExtra("phone_number", patientPrenatal.getPatientInfo().getPhone_number());
-                                intent.putExtra("recordType", "Prenatal");
+                    vaccineAdapter = new VaccineAdapter(
+                            VaccinationActivity.this,
+                            vaccineResponse.getPatients(),
+                            patientVaccine -> {
+                                Intent intent = new Intent(VaccinationActivity.this, PatientDetailsActivity.class);
+                                intent.putExtra("name", patientVaccine.getPatientInfo().getFirstname());
+                                intent.putExtra("gender", patientVaccine.getPatientInfo().getGender());
+                                intent.putExtra("age", patientVaccine.getPatientInfo().getAge());
+                                intent.putExtra("phone_number", patientVaccine.getPatientInfo().getPhone_number());
+                                intent.putExtra("recordType", "Vaccination");
                                 intent.putParcelableArrayListExtra(
                                         "present_records",
-                                        new ArrayList<>(patientPrenatal.getPresentRecords())
+                                        new ArrayList<>(patientVaccine.getPresentRecords())
                                 );
                                 intent.putParcelableArrayListExtra(
                                         "past_records",
-                                        new ArrayList<>(patientPrenatal.getPastRecords())
+                                        new ArrayList<>(patientVaccine.getPastRecords())
                                 );
                                 startActivity(intent);
                             }
                     );
 
-                    recyclerView.setAdapter(prenatalAdapter);
+                    recyclerView.setAdapter(vaccineAdapter);
                 } else {
-                    Toast.makeText(PrenatalActivity.this, "Failed to load checkups.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(VaccinationActivity.this, "Failed to load checkups.", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<PrenatalResponse> call, Throwable t) {
+            public void onFailure(Call<VaccinationResponse> call, Throwable t) {
                 progressBar.setVisibility(View.GONE);
-                Toast.makeText(PrenatalActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(VaccinationActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
-
 }
+
+

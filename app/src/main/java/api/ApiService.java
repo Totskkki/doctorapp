@@ -18,9 +18,11 @@ import com.example.myapplication.viewmodel.Totalprenatal;
 import com.example.myapplication.viewmodel.UpdatePassword;
 import com.example.myapplication.viewmodel.UpdateprofileResponse;
 import com.example.myapplication.viewmodel.animalbite.AnimalbiteResponse;
+import com.example.myapplication.viewmodel.birthing.BirthingResponse;
 import com.example.myapplication.viewmodel.prenatal.PrenatalResponse;
 
 import com.example.myapplication.viewmodel.applyforleave;
+import com.example.myapplication.viewmodel.vaccination.VaccinationResponse;
 
 import java.util.List;
 
@@ -150,6 +152,15 @@ public interface ApiService {
 
     @GET("records-prenatal.php")
     Call<PrenatalResponse> getPrenatalList();
+
+
+    @GET("records-birthing.php")
+    Call<BirthingResponse> getBirthinglList();
+
+
+    @GET("records-vaccination")
+    Call<VaccinationResponse> getVaccineList();
+
 
 
 

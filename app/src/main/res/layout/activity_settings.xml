@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="16dp">
 
 
 
@@ -35,8 +35,8 @@
                     android:layout_height="60dp"
                     app:civ_border_width="2dp"
                     app:civ_border_color="@color/colorToday"
-                    android:src="@drawable/doctor"
-                    android:layout_marginTop="15dp"
+                    android:src="@drawable/ic_doctor"
+
                     android:layout_marginRight="10dp"/>
 
                 <TextView
@@ -46,7 +46,7 @@
 
                     android:textSize="18sp"
                     android:layout_toRightOf="@id/profileCircleImageView"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="5dp"
                     android:textColor="@color/textColor" />
 
                 <TextView
@@ -99,23 +99,28 @@
             <TextView
                 style="@style/viewParent.headerText.settingsTextIcon"
                 android:checked="true"
+                android:id="@+id/aboutus"
                 android:textColor="@color/textColor"
-                android:drawableLeft="@drawable/ic_notifications"
+                android:drawableLeft="@drawable/ic_about"
                 android:text="About Doctor Scheduling"
                 android:background="@drawable/textview_background_selector" />
 
-
-
             <TextView
                 style="@style/viewParent.headerText.settingsTextIcon"
-                android:drawableLeft="@drawable/ic_help"
                 android:textColor="@color/textColor"
-                android:text="Help &amp; Support" />
+                android:drawableLeft="@drawable/ic_help"
+                android:text="Help "
+                android:id="@+id/btn_help"
+                android:background="@drawable/textview_background_selector"
+                />
+
             <TextView
                 style="@style/viewParent.headerText.settingsTextIcon"
                 android:drawableLeft="@drawable/ic_legal"
+                android:id="@+id/privacyPolicyTextView"
                 android:textColor="@color/textColor"
-                android:text="Privacy and Policy" />
+                android:text="Privacy and Policy"
+                android:background="@drawable/textview_background_selector" />
 
             <TextView
                 style="@style/viewParent.headerText.settingsTextIcon"

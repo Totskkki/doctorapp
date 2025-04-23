@@ -1,6 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Doctor scheduling</string>
+
+    <!-- App Information -->
+    <string name="app_name">Doctor Scheduling</string>
+
+    <!-- Common Labels -->
     <string name="patient_name">Patient Name</string>
     <string name="back">Back</string>
+
+    <!-- Privacy Policy Content -->
+    <string name="privacy_policy_title">Privacy Policy</string>
+    <string name="privacy_policy_last_updated">Last Updated: December 14, 2024</string>
+    <string name="privacy_policy_intro">Welcome to Doctors Scheduling app! This privacy policy explains how we collect, use, and protect your data when you use our doctor scheduling app. By using the app, you agree to the terms outlined below.</string>
+
+    <!-- Data Collection -->
+    <string name="privacy_policy_data_collection_title">Data We Collect</string>
+    <string name="privacy_policy_data_personal">Personal Information: Name, email address, and contact information for account creation and profile management.</string>
+    <string name="privacy_policy_data_scheduling">Scheduling Data: Details of appointments, doctor schedules, and patient visits.</string>
+    <string name="privacy_policy_data_usage">Usage Data: App usage patterns, crash logs, and performance metrics to improve the app experience.</string>
+
+    <!-- Data Usage -->
+    <string name="privacy_policy_data_usage_title">How We Use Your Data</string>
+    <string name="privacy_policy_data_usage_1">To manage doctor schedules and appointments.</string>
+    <string name="privacy_policy_data_usage_2">To improve user experience through app updates and support.</string>
+    <string name="privacy_policy_data_usage_3">To communicate important notifications about your appointments or app updates.</string>
+
+    <!-- Data Sharing -->
+    <string name="privacy_policy_data_sharing_title">Data Sharing</string>
+    <string name="privacy_policy_data_sharing_1">We do not sell, trade, or share your personal data with third parties, except:</string>
+    <string name="privacy_policy_data_sharing_2">When required by law or legal processes.</string>
+    <string name="privacy_policy_data_sharing_3">With service providers assisting us in operating the app, bound by confidentiality agreements.</string>
+
+    <!-- Data Security -->
+    <string name="privacy_policy_data_security_title">Data Security</string>
+    <string name="privacy_policy_data_security">We implement industry-standard security measures to protect your data. However, no system is completely secure, so we recommend safeguarding your login credentials.</string>
+
+    <!-- User Rights -->
+    <string name="privacy_policy_user_rights_title">Your Rights</string>
+    <string name="privacy_policy_user_rights_1">Access and update your personal information via the app settings.</string>
+    <string name="privacy_policy_user_rights_2">Request data deletion by contacting support at [Insert Contact Email].</string>
+
+    <!-- Policy Updates -->
+    <string name="privacy_policy_updates_title">Changes to this Policy</string>
+    <string name="privacy_policy_updates">We may update this policy periodically. Any changes will be reflected here, and major changes will be communicated through the app.</string>
+
+    <!-- Contact Information -->
+    <string name="privacy_policy_contact_title">Contact Us</string>
+    <string name="privacy_policy_contact">For any questions or concerns, contact us at floresjovenrey26@gmail.com.</string>
+
+
+
+<!--    <string name="help_title">Help</string>-->
+<!--    <string name="help_intro">Need assistance? Below are answers to common questions and ways to get support.</string>-->
+
+<!--    <string name="help_common_questions_title">Common Questions</string>-->
+<!--    <string name="help_question_1">How do I schedule an appointment?</string>-->
+<!--    <string name="help_answer_1">To schedule an appointment, go to the \'Schedule\' tab, select a doctor, and choose an available time slot.</string>-->
+
+<!--    <string name="help_question_2">How do I reset my password?</string>-->
+<!--    <string name="help_answer_2">To change your password, navigate to \'Settings\', select \' Change Username &amp; Password', and follow the instructions.</string>-->
+
+<!--    <string name="help_contact_support_title">Contact Support</string>-->
+<!--    <string name="help_contact_support_details">If you need further help, please contact our support team at floresjovenrey26@gmail.com.</string>-->
+
 </resources>

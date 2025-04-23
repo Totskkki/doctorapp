@@ -20,7 +20,7 @@
         app:navigationContentDescription="Back Button"
         app:title="All Announcements"
         app:titleTextColor="#040404"
-        android:background="#F9FEFF"
+        android:background="#FFFFFF"
         app:titleTextAppearance="@style/ToolbarTitleTextAppearance"/>
 
     <!-- ScrollView to make content scrollable -->

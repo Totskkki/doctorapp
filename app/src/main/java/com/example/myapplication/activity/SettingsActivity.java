@@ -32,6 +32,8 @@ import com.example.myapplication.viewmodel.UpdatePassword;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import org.w3c.dom.Text;
+
 import api.ApiService;
 import api.RetrofitClient;
 import retrofit2.Call;
@@ -41,7 +43,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     BottomNavigationView nav;
     private TextView appVersionTextView;
-    private TextView logouttext;
+    private TextView logouttext,Aboutus;
     private RelativeLayout view;
 
     private Switch darkModeSwitch;
@@ -69,6 +71,32 @@ public class SettingsActivity extends AppCompatActivity {
 
         // Set version
         setAppVersion();
+
+
+        TextView privacyPolicyTextView = findViewById(R.id.privacyPolicyTextView);
+        privacyPolicyTextView.setOnClickListener(v -> {
+            Intent intent = new Intent(SettingsActivity.this, PrivacyPolicyActivity.class);
+            startActivity(intent);
+        });
+
+//        TextView btnHelp = findViewById(R.id.btn_help);
+//        btnHelp.setOnClickListener(view1 -> {
+//            Intent intent = new Intent(SettingsActivity.this, HelpActivity.class);
+//            startActivity(intent);
+//        });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // Logout on click
         logouttext.setOnClickListener(view -> {
@@ -108,6 +136,18 @@ public class SettingsActivity extends AppCompatActivity {
 
         logouttext = findViewById(R.id.logout);
         logouttext.setOnClickListener(view -> logout());
+
+        Aboutus = findViewById(R.id.aboutus);
+        Aboutus.setOnClickListener(view1 -> {
+            Intent intent = new Intent(SettingsActivity.this, AboutUsActivity.class);
+
+
+            startActivity(intent);
+
+
+        });
+
+
 
 
 
@@ -171,7 +211,7 @@ public class SettingsActivity extends AppCompatActivity {
 
 
         if (profilePictureFileName != null && !profilePictureFileName.isEmpty()) {
-            String profilePictureUrl = "http://192.168.1.2/websitedeployed/user_images/" + profilePictureFileName;
+            String profilePictureUrl = "http://192.168.100.46/lutayanrhu/user_images/" + profilePictureFileName;
             Glide.with(this)
                     .load(profilePictureUrl)
                     .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))
@@ -272,7 +312,7 @@ public class SettingsActivity extends AppCompatActivity {
     private void loadProfileIcon() {
         String profilePictureFileName = sharedPreferences.getString("profile_picture", "");
         if (profilePictureFileName != null && !profilePictureFileName.isEmpty()) {
-            String profilePictureUrl = "http://192.168.1.2/websitedeployed/user_images/" + profilePictureFileName;
+            String profilePictureUrl = "http://192.168.8.101/lutayanrhu/user_images/" + profilePictureFileName;
             Glide.with(this)
                     .load(profilePictureUrl)
                     .diskCacheStrategy(DiskCacheStrategy.NONE) // Prevent Glide from using cache
@@ -445,7 +485,6 @@ public class SettingsActivity extends AppCompatActivity {
         String middleName = sharedPreferences.getString("middlename", "");
         String lastName = sharedPreferences.getString("lastname", "");
         String emailVal = sharedPreferences.getString("email", "");
-        String profilePictureUrl = sharedPreferences.getString("profile_picture", "");
         String profilePictureFileName = sharedPreferences.getString("profile_picture", "");
         String specialty = sharedPreferences.getString("Specialty", "");
         String licenseNo = sharedPreferences.getString("LicenseNo", "");
@@ -460,19 +499,18 @@ public class SettingsActivity extends AppCompatActivity {
         email.setText(emailVal);
 
 
-        // Update Profile Picture
-        if (profilePictureUrl != null && !profilePictureUrl.isEmpty()) {
-
-            String profilePictureUrlWithTimestamp = profilePictureUrl + "?timestamp=" + System.currentTimeMillis();
+        if (profilePictureFileName != null && !profilePictureFileName.isEmpty()) {
+            String profilePictureUrl = "http://192.168.8.101/lutayanrhu/user_images/" + profilePictureFileName
+                    + "?timestamp=" + System.currentTimeMillis();
             Glide.with(this)
-                    .load(profilePictureUrlWithTimestamp)
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
-                    .skipMemoryCache(true)
-                    .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))
-                    .error(R.drawable.doctor)
+                    .load(profilePictureUrl)
+                    .apply(RequestOptions.circleCropTransform())
+                    .diskCacheStrategy(DiskCacheStrategy.NONE) // Disable Glide's disk cache
+                    .skipMemoryCache(true) // Disable Glide's memory cache
+                    .error(R.drawable.doctor) // Fallback image
                     .into(profileIcon);
-
         }
+
     }
 
 }

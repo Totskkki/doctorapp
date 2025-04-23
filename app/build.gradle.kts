@@ -42,6 +42,7 @@ android {
 }
 
 dependencies {
+    implementation ("io.github.medyo:android-about-page:2.0.0")
     implementation (libs.core)
     implementation(libs.multidex)
     implementation(libs.core.ktx)
@@ -64,4 +65,5 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
 }

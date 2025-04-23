@@ -28,17 +28,18 @@
                 android:layout_marginTop="16dp"
                 android:orientation="horizontal">
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/profileIcon"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:civ_border_width="2dp"
                     android:layout_marginStart="10dp"
-                    android:layout_weight="0"
-                    android:background="@drawable/rounded_imageview_background"
-                    app:srcCompat="@drawable/doctor"
-                    android:scaleType="centerCrop"
+                    app:civ_border_color="@color/colorToday"
+                    android:src="@drawable/ic_doctor"
 
-                    />
+                    android:layout_marginRight="10dp"/>
+
+
 
                 <LinearLayout
                     android:layout_width="262dp"

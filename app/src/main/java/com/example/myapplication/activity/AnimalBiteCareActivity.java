@@ -54,6 +54,7 @@ public class AnimalBiteCareActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_animal_bite_care);
         ImageView closeButton = findViewById(R.id.closeButton);
+
         closeButton.setOnClickListener(v -> onBackPressed());
 
 

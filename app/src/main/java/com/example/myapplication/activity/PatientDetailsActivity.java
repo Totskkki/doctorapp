@@ -13,7 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.viewmodel.Checkup;
 import com.example.myapplication.viewmodel.animalbite.Bite;
+import com.example.myapplication.viewmodel.birthing.birthing;
 import com.example.myapplication.viewmodel.prenatal.Prenatal;
+import com.example.myapplication.viewmodel.vaccination.Vaccination;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -67,6 +69,16 @@ public class PatientDetailsActivity extends AppCompatActivity {
             ArrayList<Prenatal> pastRecords = intent.getParcelableArrayListExtra("past_records");
             populatePrenatalRecords(presentRecords, pastRecords);
         }
+        else if ("Birthing".equals(recordType)) {
+            ArrayList<birthing> presentRecords = intent.getParcelableArrayListExtra("present_records");
+            ArrayList<birthing> pastRecords = intent.getParcelableArrayListExtra("past_records");
+            populateBirthingRecords(presentRecords, pastRecords);
+        }
+        else if ("Vaccination".equals(recordType)) {
+            ArrayList<Vaccination> presentRecords = intent.getParcelableArrayListExtra("present_records");
+            ArrayList<Vaccination> pastRecords = intent.getParcelableArrayListExtra("past_records");
+            populateVaccinationRecords(presentRecords, pastRecords);
+        }
 
 
         // Set patient info
@@ -75,6 +87,16 @@ public class PatientDetailsActivity extends AppCompatActivity {
         patientStatusTextView.setText(formatDate(admittedDate));
 
 
+    }
+
+    private void populateVaccinationRecords(ArrayList<Vaccination> presentRecords, ArrayList<Vaccination> pastRecords) {
+        populateRecordsLayout(presentRecordsLayout, presentRecords, "No present prenatal records found.");
+        populateRecordsLayout(pastRecordsLayout, pastRecords, "No past prenatal records found.");
+    }
+
+    private void populateBirthingRecords(ArrayList<birthing> presentRecords, ArrayList<birthing> pastRecords) {
+        populateRecordsLayout(presentRecordsLayout, presentRecords, "No present prenatal records found.");
+        populateRecordsLayout(pastRecordsLayout, pastRecords, "No past prenatal records found.");
     }
 
     private void populatePrenatalRecords(ArrayList<Prenatal> presentRecords, ArrayList<Prenatal> pastRecords) {
@@ -160,7 +182,39 @@ public class PatientDetailsActivity extends AppCompatActivity {
 
             recordLayout.addView(biteDateView);
             recordLayout.addView(biteRemarksView);
+        } else if (record instanceof birthing) {
+            birthing birth= (birthing) record;
+
+            TextView biteDateView = new TextView(this);
+            biteDateView.setText(String.format("Birhting Date: %s", formatDate(birth.getDate())));
+            biteDateView.setTextSize(16);
+            biteDateView.setTextColor(getResources().getColor(R.color.black));
+
+            TextView biteRemarksView = new TextView(this);
+            biteRemarksView.setText(String.format("Case no.: %s", birth.getCaseno()));
+            biteRemarksView.setTextSize(14);
+            biteRemarksView.setTextColor(getResources().getColor(R.color.gray));
+
+            recordLayout.addView(biteDateView);
+            recordLayout.addView(biteRemarksView);
+        } else if (record instanceof Vaccination) {
+            Vaccination vaccination= (Vaccination) record;
+
+            TextView biteDateView = new TextView(this);
+            biteDateView.setText(String.format("Date vaccinated: %s", formatDate(vaccination.getDate())));
+            biteDateView.setTextSize(16);
+            biteDateView.setTextColor(getResources().getColor(R.color.black));
+
+            TextView biteRemarksView = new TextView(this);
+            biteRemarksView.setText(String.format("Vaccine.: %s", vaccination.getComments()));
+            biteRemarksView.setTextSize(14);
+            biteRemarksView.setTextColor(getResources().getColor(R.color.gray));
+
+            recordLayout.addView(biteDateView);
+            recordLayout.addView(biteRemarksView);
         }
+
+
 
         return recordLayout;
     }

@@ -14,9 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.myapplication.R;
 import com.example.myapplication.viewmodel.ApplyLeaveBottomSheetDialog;
-import com.example.myapplication.viewmodel.LeaveRequest;
 import com.example.myapplication.viewmodel.LeaveResponse;
-import com.example.myapplication.viewmodel.applyforleave;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -24,7 +22,6 @@ import java.util.Date;
 import java.util.Locale;
 
 import api.ApiService;
-import api.DialogUtils;
 
 import api.ResultDialogFragment;
 import api.RetrofitClient;
@@ -183,7 +180,6 @@ public class ViewDoctorScheduleActivity extends AppCompatActivity implements App
             return null;
         }
     }
-
 
 
 }

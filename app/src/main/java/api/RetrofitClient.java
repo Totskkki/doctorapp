@@ -11,7 +11,7 @@ package api;
 //
 //public class RetrofitClient {
 //    private static Retrofit retrofit;
-//    private static final String BASE_URL = "http://192.168.1.2/websitedeployed/api/";
+//    private static final String BASE_URL = "http://192.168.1.2/lutayanrhu/api/";
 //
 //    public static Retrofit getRetrofitInstance() {
 //
@@ -44,7 +44,7 @@ public class RetrofitClient {
     private static Retrofit retrofit = null;
 
     // Default Base URL
-    private static final String BASE_URL = "http://192.168.1.2/websitedeployed/api/";
+    private static final String BASE_URL = "http://192.168.100.46/lutayanrhu/api/";
 
     // Method to get a Retrofit instance
     public static synchronized Retrofit getRetrofitInstance() {

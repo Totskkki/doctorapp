@@ -5,13 +5,10 @@ import static android.content.Context.MODE_PRIVATE;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -102,7 +99,7 @@ public class EditProfileBottomSheet extends BottomSheetDialogFragment {
 
             // If there's a profile picture URL, load it into the ImageView
             if (profilePictureFileName != null && !profilePictureFileName.isEmpty()) {
-                String profilePictureUrl = "http://192.168.1.2/websitedeployed/user_images/" + profilePictureFileName;  // Construct the full URL
+                String profilePictureUrl = "http://192.168.1.2/lutayanrhu/user_images/" + profilePictureFileName;  // Construct the full URL
                 Glide.with(this)
                         .load(profilePictureUrl)
                         .apply(new RequestOptions()
@@ -140,10 +137,9 @@ public class EditProfileBottomSheet extends BottomSheetDialogFragment {
                 String userID = getArguments() != null ? getArguments().getString("userID") : "";
                 if (userID.isEmpty()) {
                     Toast.makeText(getContext(), "User ID is missing.", Toast.LENGTH_SHORT).show();
+                    Log.d("User ID", "User ID: " + userID);
                     return;
                 }
-
-
                 // Call API to update profile
                 updateProfile(userID, firstName, middleName, lastName, email, specialtyText, profTypeText, licenseNoText, AddressText, Personnel, Position);
             }
@@ -269,6 +265,11 @@ public class EditProfileBottomSheet extends BottomSheetDialogFragment {
                 if (response.isSuccessful()) {
                     Toast.makeText(getContext(), "Profile updated successfully!", Toast.LENGTH_SHORT).show();
 
+
+                    // Clear Glide cache
+                    Glide.get(getContext()).clearMemory();
+                    new Thread(() -> Glide.get(getContext()).clearDiskCache()).start();
+
                     Context context = requireContext(); // Throws if the fragment is not attached
                     SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -293,8 +294,6 @@ public class EditProfileBottomSheet extends BottomSheetDialogFragment {
                         Log.e("API", "Response or data is null");
                     }
                     editor.apply();
-
-                    // Notify the activity to refresh profile details
                     if (getActivity() != null) {
                         ((SettingsActivity) getActivity()).refreshProfile();
                     }

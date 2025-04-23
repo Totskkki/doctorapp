@@ -5,11 +5,8 @@ package com.example.myapplication.activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
-import android.graphics.Color;
 import android.os.Bundle;
 
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -17,7 +14,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.myapplication.adapter.GridAdapter;
@@ -25,15 +21,12 @@ import com.example.myapplication.adapter.GridAdapter;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import androidx.appcompat.widget.AppCompatImageView;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.viewmodel.AnnouncementResponse;
 import com.example.myapplication.viewmodel.GridItem;
-import com.example.myapplication.viewmodel.LogoutResponse;
 import com.example.myapplication.viewmodel.NotificationResponse;
 import com.example.myapplication.viewmodel.TodaysPatientCountResponse;
 import com.example.myapplication.viewmodel.TotalCheckupResponse;
@@ -57,7 +50,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import com.example.myapplication.adapter.AnnouncementAdapter;
-import com.google.android.material.navigation.NavigationView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -160,7 +152,7 @@ public class DashboardActivity extends AppCompatActivity {
 
         // Load profile picture if available
         if (profilePictureFileName != null && !profilePictureFileName.isEmpty()) {
-            String profilePictureUrl = "http://192.168.1.2/websitedeployed/user_images/" + profilePictureFileName;
+            String profilePictureUrl = "http://192.168.100.46/lutayanrhu/user_images/" + profilePictureFileName;
             Glide.with(this)
                     .load(profilePictureUrl)
                     .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))
@@ -168,34 +160,6 @@ public class DashboardActivity extends AppCompatActivity {
                     .into(profileIcon);
         }
 
-
-        // Set up drawer layout and toggle button for drawer
-//        drawerLayout = findViewById(R.id.drawer_layout);
-//        profileIcon.setOnClickListener(v -> {
-//            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-//                drawerLayout.closeDrawer(GravityCompat.START);
-//            } else {
-//                drawerLayout.openDrawer(GravityCompat.START);
-//            }
-//        });
-
-//        NavigationView navigationView = findViewById(R.id.nav_view);
-//        MenuItem logoutItem = navigationView.getMenu().findItem(R.id.nav_logout);
-//
-//        SpannableString s = new SpannableString(logoutItem.getTitle());
-//        s.setSpan(new ForegroundColorSpan(Color.RED), 0, s.length(), 0);
-//        logoutItem.setTitle(s);
-//
-//          // Set the NavigationView item selected listener
-//        navigationView.setNavigationItemSelectedListener(item -> {
-//            int id = item.getItemId();
-//            if (id == R.id.nav_logout) {
-//                logout();
-//                return true; // Return true if the item is handled
-//            }
-//            // Handle other items if needed
-//            return false;
-//        });
 
 
 
@@ -300,12 +264,12 @@ public class DashboardActivity extends AppCompatActivity {
             case "Prenatal":
                 startActivity(new Intent(this, PrenatalActivity.class));
                 break;
-//            case "Birthing":
-//                startActivity(new Intent(this, BirthingActivity.class));
-//                break;
-//            case "Immunizations":
-//                startActivity(new Intent(this, ImmunizationsActivity.class));
-//                break;
+            case "Birthing":
+                startActivity(new Intent(this, BirthingActivity.class));
+                break;
+             case "Immunizations":
+               startActivity(new Intent(this, VaccinationActivity.class));
+             break;
             }
         });
 
@@ -323,7 +287,7 @@ public class DashboardActivity extends AppCompatActivity {
     private void fetchImmunizationsCounts(List<GridItem> itemList) {
         ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
 
-        Call<Totalimmunization> call = apiService.getTotalimuunization("total_bite");
+        Call<Totalimmunization> call = apiService.getTotalimuunization("total_vaccine");
 
 
 
@@ -354,7 +318,7 @@ public class DashboardActivity extends AppCompatActivity {
     private void fetchbirthingCounts(List<GridItem> itemList) {
         ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
 
-        Call<Totalbirthing> call = apiService.getTotalbirthing("total_bite");
+        Call<Totalbirthing> call = apiService.getTotalbirthing("total_birth");
         call.enqueue(new Callback<Totalbirthing>() {
 
             @Override
@@ -382,7 +346,7 @@ public class DashboardActivity extends AppCompatActivity {
     private void fetchprenatalCounts(List<GridItem> itemList) {
         ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
 
-        Call<Totalprenatal> call = apiService.getTotalprenatal("total_bite");
+        Call<Totalprenatal> call = apiService.getTotalprenatal("total_prenatal");
         call.enqueue(new Callback<Totalprenatal>() {
 
             @Override

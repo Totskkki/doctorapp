@@ -3,7 +3,7 @@ package com.example.myapplication.viewmodel;
 import com.google.gson.annotations.SerializedName;
 
 public class Totalimmunization {
-    @SerializedName("Totalimmunization")
+    @SerializedName("total_vaccine")
     private int Totalimmunization;
 
     public int getTotalimmunization() {
